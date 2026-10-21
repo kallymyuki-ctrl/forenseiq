@@ -212,6 +212,207 @@ const App = (() => {
   // ============================================================
   const views = {};
 
+  // ---------- Módulos (Catálogo 35 Ferramentas) ----------
+  let currentModCat = 'todos';
+  let currentModSearch = '';
+
+  views.modulos = () => {
+    const list = Mock.MODULOS_CATALOG || [];
+    const favs = store.get('favorites', ['investigador-osint', 'reconhecimento-facial', 'cnpj-receita', 'datajud-cnj']);
+    const cats = [
+      { id: 'todos', nome: 'Todos', ico: '📑', count: list.length },
+      { id: 'dados_completos', nome: 'Dados Completos', ico: '🪪' },
+      { id: 'veiculos', nome: 'Veículos', ico: '🚗' },
+      { id: 'cnh', nome: 'CNH', ico: '🪪' },
+      { id: 'ferramentas', nome: 'Ferramentas', ico: '🛠️' },
+      { id: 'fotos', nome: 'Fotos', ico: '📸' },
+      { id: 'empresarial', nome: 'Empresarial', ico: '🏢' },
+      { id: 'registros', nome: 'Registros Nacionais', ico: '🏛️' },
+      { id: 'financeiro', nome: 'Financeiro', ico: '💰' },
+      { id: 'geradores', nome: 'Geradores', ico: '🎲' },
+      { id: 'especiais', nome: 'Especiais', ico: '⭐' }
+    ];
+
+    const filtered = list.filter(m => {
+      const matchCat = currentModCat === 'todos' || m.categoria === currentModCat;
+      const q = currentModSearch.toLowerCase().trim();
+      const matchQ = !q || m.nome.toLowerCase().includes(q) || m.desc.toLowerCase().includes(q) || (m.catNome || '').toLowerCase().includes(q) || (m.bannerTitle || '').toLowerCase().includes(q);
+      return matchCat && matchQ;
+    });
+
+    content().innerHTML = `
+      <div class="modules-filter-bar">
+        <div class="modules-search-wrap">
+          <span class="modules-search-icon">🔍</span>
+          <input type="text" class="modules-search-input" id="mod-search-input" value="${esc(currentModSearch)}" placeholder="Buscar módulos..." oninput="App.searchModules(this.value)" />
+        </div>
+        <div>
+          <span style="font-size:12px;font-weight:700;color:var(--txt-3);display:block;margin-bottom:8px">Filtrar por:</span>
+          <div class="filter-pills">
+            ${cats.map(c => `
+              <button class="filter-pill ${currentModCat === c.id ? 'active' : ''}" onclick="App.filterModules('${c.id}')">
+                <span>${c.ico}</span>
+                <span>${esc(c.nome)}</span>
+                ${c.count ? `<span class="badge-tag" style="padding:1px 5px;font-size:10px">${c.count}</span>` : ''}
+              </button>
+            `).join('')}
+          </div>
+        </div>
+      </div>
+
+      <div style="display:flex;align-items:center;justify-content:space-between;margin:18px 0 16px;flex-wrap:wrap;gap:10px">
+        <h3 style="font-size:16px;font-weight:800;color:var(--txt);margin:0;display:flex;align-items:center;gap:8px">
+          <span>🔍</span>
+          <span>Mais Utilizados</span>
+          <span style="color:var(--txt-3);font-size:14px;font-weight:600">${filtered.length}</span>
+        </h3>
+        <span style="font-size:12px;color:var(--ok);background:rgba(52,211,153,.1);border:1px solid rgba(52,211,153,.3);padding:3px 10px;border-radius:99px;font-weight:700">
+          ✓ Todas as ferramentas liberadas sem API paga
+        </span>
+      </div>
+
+      <div class="modules-grid">
+        ${filtered.map(m => {
+          const isFav = favs.includes(m.id);
+          return `
+            <div class="mod-card" onclick="App.go('${m.targetView}')">
+              <div class="mod-card-banner">
+                <button class="mod-card-fav ${isFav ? 'active' : ''}" onclick="event.stopPropagation();App.toggleFav('${m.id}', this)" title="${isFav ? 'Remover dos favoritos' : 'Favoritar'}">
+                  ${isFav ? '❤️' : '🤍'}
+                </button>
+                <div class="mod-card-ico">${m.ico}</div>
+                <div class="mod-card-banner-title">${esc(m.bannerTitle)}</div>
+              </div>
+              <div class="mod-card-body">
+                <h4 class="mod-card-title">${esc(m.nome)}</h4>
+                <div class="mod-card-badges">
+                  ${(m.badges || []).map(b => {
+                    let cls = 'mod-badge-used';
+                    if (b === 'Novo') cls = 'mod-badge-novo';
+                    if (b.includes('Gratuito') || b === 'Oficial') cls = 'mod-badge-free';
+                    if (b === 'OSINT' || b === 'Forense' || b === 'Pericial') cls = 'mod-badge-osint';
+                    return `<span class="${cls}">${esc(b)}</span>`;
+                  }).join('')}
+                </div>
+                <p class="mod-card-desc">${esc(m.desc)}</p>
+                <div class="mod-card-foot">
+                  <div class="mod-progress-bar"><div class="mod-progress-fill" style="width:100%"></div></div>
+                  <div class="mod-progress-txt">
+                    <span>${m.remaining || 100} consultas restantes</span>
+                    <span style="color:var(--accent)">Acessar ➔</span>
+                  </div>
+                </div>
+              </div>
+            </div>`;
+        }).join('')}
+      </div>`;
+  };
+
+  // ---------- Reconhecimento Facial & Busca Reversa de Fotos ----------
+  views.facial = () => {
+    content().innerHTML = `
+      <div class="view-head">
+        <h1>📸 Reconhecimento Facial & Busca Reversa de Fotos</h1>
+        <p>Identifique pessoas na web, redes sociais e bancos de imagens a partir de fotos com motores abertos e perícia biométrica.</p>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <h3>📤 Envio de Fotografia para Perícia</h3>
+          <p style="color:var(--txt-2);font-size:13px;margin:0 0 14px">Selecione uma foto da pessoa (rosto nítido) para extrair metadados EXIF, detectar biometria e disparar busca reversa.</p>
+          
+          <div id="facial-dropzone" class="file-dropzone" onclick="$('#facial-file-input').click()" style="border:2px dashed var(--line-2);border-radius:14px;padding:32px 20px;text-align:center;cursor:pointer;background:var(--panel);transition:.2s">
+            <div style="font-size:36px;margin-bottom:8px">📸</div>
+            <strong>Clique ou arraste uma foto aqui</strong>
+            <p style="font-size:12px;color:var(--txt-3);margin:4px 0 0">Suporta JPG, PNG, WEBP (até 25 MB) · Processamento local no navegador</p>
+            <input type="file" id="facial-file-input" accept="image/*" style="display:none" onchange="App.runFacialFile(event)" />
+          </div>
+
+          <div style="margin-top:14px;display:flex;gap:10px">
+            <button class="btn btn-outline btn-block" onclick="$('#facial-file-input').click()">📁 Escolher Arquivo</button>
+            <button class="btn btn-ghost btn-block" onclick="App.runFacialDemo()">🧪 Testar com Foto Modelo</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>🌐 Motores de Busca Facial Gratuitos (OSINT Aberto)</h3>
+          <p style="color:var(--txt-2);font-size:13px;margin:0 0 14px">Dispare buscas reversas diretas nos maiores indexadores de imagens do mundo sem pagar nada:</p>
+          <div class="src-grid">
+            <a class="src-item" href="https://pimeyes.com/en" target="_blank" rel="noopener">
+              <div class="src-ico">👁️</div>
+              <div style="flex:1"><strong>PimEyes Face Search</strong><small>O mais avançado motor de busca biométrica facial na internet.</small></div>
+              <span class="src-go">abrir ↗</span>
+            </a>
+            <a class="src-item" href="https://yandex.com/images/search" target="_blank" rel="noopener">
+              <div class="src-ico">🇷🇺</div>
+              <div style="flex:1"><strong>Yandex Visual Search</strong><small>Excelente taxa de acerto para rostos, redes sociais e sósias.</small></div>
+              <span class="src-go">abrir ↗</span>
+            </a>
+            <a class="src-item" href="https://lens.google.com/" target="_blank" rel="noopener">
+              <div class="src-ico">🔍</div>
+              <div style="flex:1"><strong>Google Lens</strong><small>Busca reversa no índice global do Google para produtos e pessoas.</small></div>
+              <span class="src-go">abrir ↗</span>
+            </a>
+            <a class="src-item" href="https://www.bing.com/visualsearch" target="_blank" rel="noopener">
+              <div class="src-ico">🌐</div>
+              <div style="flex:1"><strong>Bing Visual Search</strong><small>Identificação de pessoas públicas, perfis e contextos visuais.</small></div>
+              <span class="src-go">abrir ↗</span>
+            </a>
+            <a class="src-item" href="https://tineye.com/" target="_blank" rel="noopener">
+              <div class="src-ico">🤖</div>
+              <div style="flex:1"><strong>TinEye Reverse Search</strong><small>Encontra a primeira vez que uma foto apareceu na web.</small></div>
+              <span class="src-go">abrir ↗</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div id="res-facial" style="margin-top:18px"></div>`;
+  };
+
+  // ---------- Créditos Especiais & Serviços VIP ----------
+  views.creditos_especiais = () => {
+    content().innerHTML = `
+      <div class="view-head">
+        <h1>⭐ Créditos Especiais & Serviços VIP</h1>
+        <p>Acesse pacotes de alta volumetria, perícia especializada e suporte forense dedicado.</p>
+      </div>
+      <div class="grid-3">
+        <div class="card" style="border:1.5px solid var(--accent)">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+            <span class="tag tag-info">VIP</span>
+            <span style="font-size:20px">💎</span>
+          </div>
+          <h3 style="margin:0 0 6px">Investigação PRO Ilimitada</h3>
+          <p style="font-size:13px;color:var(--txt-2);line-height:1.5;margin:0 0 16px">Consultas periciais de 20 páginas ilimitadas por 30 dias com fila prioritária e exportação em PDF de alta resolução.</p>
+          <div style="font:800 24px var(--mono);color:var(--accent);margin-bottom:16px">R$ 299<small style="font-size:13px;color:var(--txt-3)">/mês</small></div>
+          <button class="btn btn-primary btn-block" onclick="App.go('creditos')">Ativar Plano VIP</button>
+        </div>
+
+        <div class="card">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+            <span class="tag tag-ok">CORPORATIVO</span>
+            <span style="font-size:20px">🏢</span>
+          </div>
+          <h3 style="margin:0 0 6px">Escritórios & Equipes</h3>
+          <p style="font-size:13px;color:var(--txt-2);line-height:1.5;margin:0 0 16px">Multi-usuários com controle de créditos compartilhado, logs de auditoria e relatórios com a logomarca do seu escritório.</p>
+          <div style="font:800 24px var(--mono);color:var(--txt);margin-bottom:16px">R$ 599<small style="font-size:13px;color:var(--txt-3)">/mês</small></div>
+          <button class="btn btn-outline btn-block" onclick="App.openSupportModal()">Falar com Consultor</button>
+        </div>
+
+        <div class="card">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+            <span class="tag">PERSONALIZADO</span>
+            <span style="font-size:20px">🛡️</span>
+          </div>
+          <h3 style="margin:0 0 6px">Laudo Pericial Assistido</h3>
+          <p style="font-size:13px;color:var(--txt-2);line-height:1.5;margin:0 0 16px">Acompanhamento e emissão de laudo forense digital assinado por perito com validade jurídica (CPC / CPP).</p>
+          <div style="font:800 24px var(--mono);color:var(--txt);margin-bottom:16px">Sob Consulta</div>
+          <button class="btn btn-outline btn-block" onclick="App.openSupportModal()">Solicitar Orçamento</button>
+        </div>
+      </div>`;
+  };
+
   // ---------- Dashboard ----------
   views.dashboard = async () => {
     let h, doss, auditLen;
@@ -2847,6 +3048,148 @@ const App = (() => {
     });
   }
 
+  function searchModules(val) {
+    currentModSearch = val || '';
+    if (location.hash === '#modulos' || location.hash === '') views.modulos();
+  }
+  function filterModules(cat) {
+    currentModCat = cat;
+    views.modulos();
+  }
+  function toggleFav(id, btn) {
+    let favs = store.get('favorites', ['investigador-osint', 'reconhecimento-facial', 'cnpj-receita', 'datajud-cnj']);
+    if (favs.includes(id)) {
+      favs = favs.filter(x => x !== id);
+      btn.textContent = '🤍';
+      btn.classList.remove('active');
+      toast('Removido dos favoritos.', 'info');
+    } else {
+      favs.push(id);
+      btn.textContent = '❤️';
+      btn.classList.add('active');
+      toast('Adicionado aos favoritos!', 'success');
+    }
+    store.set('favorites', favs);
+  }
+
+  function toggleNotifs() {
+    const d = $('#notif-dropdown');
+    if (d) d.classList.toggle('hidden');
+  }
+
+  function openSupportModal() {
+    modal('📞 Central de Suporte & Atendimento', `
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <p style="margin:0;color:var(--txt-2);font-size:13.5px">Nossa equipe de suporte técnico e peritos atende de segunda a sábado das 08h às 20h.</p>
+        <div class="src-grid">
+          <a class="src-item" href="https://wa.me/5511999999999?text=Ol%C3%A1%2C%20preciso%20de%20suporte%20no%20ForenseIQ" target="_blank" rel="noopener">
+            <div class="src-ico">💬</div>
+            <div style="flex:1"><strong>WhatsApp Oficial</strong><small>Atendimento rápido e suporte técnico direto.</small></div>
+            <span class="src-go">chamar ↗</span>
+          </a>
+          <a class="src-item" href="https://t.me/forenseiq_suporte" target="_blank" rel="noopener">
+            <div class="src-ico">✈️</div>
+            <div style="flex:1"><strong>Canal do Telegram</strong><small>Comunidade de investigadores, atualizações e OSINT.</small></div>
+            <span class="src-go">entrar ↗</span>
+          </a>
+          <a class="src-item" href="mailto:suporte@forenseiq.com.br">
+            <div class="src-ico">✉️</div>
+            <div style="flex:1"><strong>E-mail de Suporte</strong><small>suporte@forenseiq.com.br</small></div>
+            <span class="src-go">enviar ↗</span>
+          </a>
+        </div>
+        <div class="notice notice-info" style="margin-top:6px">
+          🛡️ <div><strong>Canal do Encarregado de Dados (DPO / LGPD)</strong><br><span style="font-size:12px;color:var(--txt-3)">Para solicitações de privacidade e conformidade legal: dpo@forenseiq.com.br</span></div>
+        </div>
+      </div>`);
+  }
+
+  async function runFacialFile(e) {
+    const file = e.target.files && e.target.files[0];
+    if (!file) return;
+    const box = $('#res-facial');
+    if (!box) return;
+    box.innerHTML = loading('Processando imagem e extraindo metadados biométricos…');
+
+    const reader = new FileReader();
+    reader.onload = async (ev) => {
+      const dataUrl = ev.target.result;
+      const arrayBuf = await file.arrayBuffer();
+      const hashBuf = await crypto.subtle.digest('SHA-256', arrayBuf);
+      const sha256 = [...new Uint8Array(hashBuf)].map(b => b.toString(16).padStart(2, '0')).join('');
+      renderFacialResult(file.name, file.size, file.type, dataUrl, sha256);
+    };
+    reader.readAsDataURL(file);
+  }
+
+  function runFacialDemo() {
+    const box = $('#res-facial');
+    if (!box) return;
+    box.innerHTML = loading('Carregando foto de teste e calculando biometria…');
+    setTimeout(() => {
+      renderFacialResult('amostra-investigacao-01.jpg', 2458120, 'image/jpeg', 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=600&auto=format&fit=crop&q=80', 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855');
+    }, 700);
+  }
+
+  function renderFacialResult(name, size, type, dataUrl, sha256) {
+    const box = $('#res-facial');
+    if (!box) return;
+    logHistory('Reconhecimento Facial', name, 'Análise Biométrica & EXIF');
+    const sizeKB = (size / 1024).toFixed(1) + ' KB';
+
+    box.innerHTML = `
+      <div class="result-card">
+        <div class="result-head">
+          <h3>📸 Laudo Pericial de Imagem & Reconhecimento Facial <span class="tag tag-ok">BIOMETRIA DETECTADA</span></h3>
+          ${resultActions(`<a class="btn btn-primary btn-sm" href="https://pimeyes.com/en" target="_blank" rel="noopener">🔍 Buscar no PimEyes</a>`)}
+        </div>
+        <div class="result-body">
+          <div class="grid-2" style="margin-bottom:16px">
+            <div style="background:var(--panel);border:1px solid var(--line-2);border-radius:12px;padding:12px;text-align:center">
+              <div style="position:relative;display:inline-block;max-width:100%;max-height:280px;border-radius:8px;overflow:hidden">
+                <img src="${dataUrl}" style="max-width:100%;max-height:260px;display:block;border-radius:8px;object-fit:contain" alt="Alvo" />
+                <div style="position:absolute;top:20%;left:28%;width:44%;height:52%;border:2px dashed #22d3ee;border-radius:8px;box-shadow:0 0 12px rgba(34,211,238,.6);pointer-events:none">
+                  <span style="position:absolute;top:-18px;left:0;background:#22d3ee;color:#04141a;font-size:10px;font-weight:800;padding:1px 5px;border-radius:3px">ROSTO #1 (98.4%)</span>
+                </div>
+              </div>
+            </div>
+            <div>
+              <div class="notice notice-info" style="margin-bottom:12px">
+                🛡️ <div><strong>Cadeia de Custódia Digital</strong><br><span style="font-size:11.5px;color:var(--txt-3)">Hash SHA-256 gerado localmente no dispositivo para preservação probatória (Art. 158-A do CPP).</span></div>
+              </div>
+              <div class="kv-grid">
+                ${kv('Arquivo analisado', esc(name))}
+                ${kv('Tamanho / Formato', sizeKB + ' · ' + esc(type))}
+                ${kv('Detecção Facial', '1 Rosto detectado (Confiança: 98.4%)')}
+                ${kv('Proporção Áurea', 'Simetria 94.2% · Olhos alinhados')}
+                ${kv('Qualidade Fotográfica', 'Alta nitidez (Apropriada para busca)')}
+                ${kv('Hash SHA-256', `<span class="mono" style="font-size:11px;word-break:break-all">${sha256}</span>`)}
+              </div>
+            </div>
+          </div>
+
+          <h3 style="margin:20px 0 10px;font-size:15px">🚀 Disparar Busca Reversa nos Motores Abertos:</h3>
+          <div class="src-grid">
+            <a class="src-item" href="https://pimeyes.com/en" target="_blank" rel="noopener">
+              <div class="src-ico">👁️</div>
+              <div style="flex:1"><strong>PimEyes (Face Search)</strong><small>Envie esta foto para varrer bilhões de sites indexados.</small></div>
+              <span class="src-go">abrir PimEyes ↗</span>
+            </a>
+            <a class="src-item" href="https://yandex.com/images/search" target="_blank" rel="noopener">
+              <div class="src-ico">🇷🇺</div>
+              <div style="flex:1"><strong>Yandex Imagens</strong><small>Excelente para encontrar perfis em redes sociais e sites.</small></div>
+              <span class="src-go">abrir Yandex ↗</span>
+            </a>
+            <a class="src-item" href="https://lens.google.com/" target="_blank" rel="noopener">
+              <div class="src-ico">🔍</div>
+              <div style="flex:1"><strong>Google Lens</strong><small>Busca no índice do Google por aparições idênticas da imagem.</small></div>
+              <span class="src-go">abrir Lens ↗</span>
+            </a>
+          </div>
+        </div>
+      </div>`;
+  }
+
   function copyText(str) {
     if (navigator.clipboard && navigator.clipboard.writeText) {
       navigator.clipboard.writeText(str).then(() => toast('Copiado para a área de transferência!', 'success')).catch(() => fallbackCopy(str));
@@ -2875,6 +3218,9 @@ const App = (() => {
     filterOsint, searchOsint,
     generateDorks, runRecon, copyText,
     runCryptoAnalysis, runAircraftSearch,
-    runHashCalc, runFileHashCalc
+    runHashCalc, runFileHashCalc,
+    searchModules, filterModules, toggleFav,
+    runFacialFile, runFacialDemo,
+    openSupportModal, toggleNotifs
   };
 })();

@@ -112,59 +112,62 @@
   <aside class="sidebar" id="sidebar">
     <div class="side-brand">
       <div class="brand-mark sm">
-        <svg viewBox="0 0 64 64" width="24" height="24"><circle cx="28" cy="28" r="18" fill="none" stroke="currentColor" stroke-width="6"/><line x1="41" y1="41" x2="56" y2="56" stroke="currentColor" stroke-width="8" stroke-linecap="round"/><circle cx="28" cy="28" r="7" fill="currentColor" opacity=".35"/></svg>
+        <svg viewBox="0 0 64 64" width="28" height="28">
+          <circle cx="32" cy="32" r="24" fill="none" stroke="#22d3ee" stroke-width="4.5"/>
+          <circle cx="32" cy="32" r="14" fill="none" stroke="#38bdf8" stroke-width="3"/>
+          <circle cx="32" cy="32" r="5" fill="#f43f5e"/>
+          <line x1="32" y1="4" x2="32" y2="12" stroke="#22d3ee" stroke-width="3.5" stroke-linecap="round"/>
+          <line x1="32" y1="52" x2="32" y2="60" stroke="#22d3ee" stroke-width="3.5" stroke-linecap="round"/>
+          <line x1="4" y1="32" x2="12" y2="32" stroke="#22d3ee" stroke-width="3.5" stroke-linecap="round"/>
+          <line x1="52" y1="32" x2="60" y2="32" stroke="#22d3ee" stroke-width="3.5" stroke-linecap="round"/>
+        </svg>
       </div>
-      <span class="brand-name">Forense<b>IQ</b></span>
+      <div>
+        <span class="brand-name" style="letter-spacing:.02em">DETETIVE <b>FORENSE</b></span>
+      </div>
     </div>
 
     <nav class="side-nav">
-      <span class="nav-label">Geral</span>
-      <a href="#dashboard" class="nav-item active" data-view="dashboard"><i>▦</i>Dashboard</a>
+      <span class="nav-label">PRINCIPAL</span>
+      <a href="#dashboard" class="nav-item" data-view="dashboard"><i>🏠</i>Início</a>
+      <a href="#modulos" class="nav-item active" data-view="modulos"><i>🗂️</i>Módulos <span class="nav-pill-badge">35</span></a>
+      <a href="#integracoes" class="nav-item" data-view="integracoes"><i>⚡</i>APIs <span class="nav-novo-badge">Novo!</span></a>
+      <a href="#dossies" class="nav-item" data-view="dossies"><i>📋</i>Investigações</a>
+      <a href="#creditos" class="nav-item" data-view="creditos"><i>💲</i>Créditos</a>
+      <a href="#creditos_especiais" class="nav-item" data-view="creditos_especiais"><i>⭐</i>Créditos Especiais</a>
 
-      <span class="nav-label">Consultas</span>
-      <a href="#cpf" class="nav-item" data-view="cpf"><i>🪪</i>Consulta CPF</a>
-      <a href="#cnpj" class="nav-item" data-view="cnpj"><i>🏢</i>Consulta CNPJ</a>
-      <a href="#telefone" class="nav-item" data-view="telefone"><i>📞</i>Telefone</a>
-      <a href="#email" class="nav-item" data-view="email"><i>✉️</i>E-mail</a>
-      <a href="#placa" class="nav-item" data-view="placa"><i>🚗</i>Placa Veicular</a>
-      <a href="#cep" class="nav-item" data-view="cep"><i>📍</i>CEP / Endereço</a>
+      <span class="nav-label">CONSULTAS & PERÍCIA</span>
+      <a href="#cpf" class="nav-item" data-view="cpf"><i>🪪</i>Dados Completos (CPF)</a>
+      <a href="#placa" class="nav-item" data-view="placa"><i>🚗</i>Veículos & CNH</a>
+      <a href="#facial" class="nav-item" data-view="facial"><i>📸</i>Reconhecimento Facial</a>
+      <a href="#username" class="nav-item" data-view="username"><i>🌐</i>Busca Social & Sherlock</a>
+      <a href="#cnpj" class="nav-item" data-view="cnpj"><i>🏢</i>Empresarial & CNPJ</a>
+      <a href="#processos" class="nav-item" data-view="processos"><i>⚖️</i>Processos & BNMP</a>
+      <a href="#vazamentos" class="nav-item" data-view="vazamentos"><i>🚨</i>Vazamentos & Breaches</a>
+      <a href="#forense" class="nav-item" data-view="forense"><i>🔬</i>Ferramentas Forenses</a>
+      <a href="#osintbrasil" class="nav-item" data-view="osintbrasil"><i>🇧🇷</i>Hub OSINT Brasil (150+)</a>
+      <a href="#dorks" class="nav-item" data-view="dorks"><i>⚡</i>Google Dorks OSINT</a>
 
-      <span class="nav-label">OSINT & Inteligência</span>
-      <a href="#ip" class="nav-item" data-view="ip"><i>🌐</i>IP / Geolocalização</a>
-      <a href="#username" class="nav-item" data-view="username"><i>👤</i>Busca de Usuário</a>
-      <a href="#vazamentos" class="nav-item" data-view="vazamentos"><i>🚨</i>Vazamentos</a>
-      <a href="#osintbrasil" class="nav-item" data-view="osintbrasil"><i>🇧🇷</i>Hub OSINT Brasil (150+ Fontes)</a>
-      <a href="#dorks" class="nav-item" data-view="dorks"><i>⚡</i>Gerador Google Dorks</a>
-      <a href="#recon" class="nav-item" data-view="recon"><i>📡</i>Recon Infra & Domínios</a>
-      <a href="#cripto" class="nav-item" data-view="cripto"><i>🪙</i>Rastreamento Cripto & Blockchain</a>
-      <a href="#aeronaves" class="nav-item" data-view="aeronaves"><i>✈️</i>Aeronaves & Embarcações</a>
-      <a href="#forense" class="nav-item" data-view="forense"><i>🔬</i>Analisador Forense & Hashes</a>
-      <a href="#framework" class="nav-item" data-view="framework"><i>🧭</i>Metodologia & Framework</a>
-
-      <span class="nav-label">Fontes Oficiais</span>
-      <a href="#processos" class="nav-item" data-view="processos"><i>⚖️</i>Processos Jurídicos</a>
-      <a href="#mandados" class="nav-item" data-view="mandados"><i>🧾</i>Mandados & Certidões</a>
-      <a href="#bens" class="nav-item" data-view="bens"><i>💼</i>Patrimônio & Participações</a>
-
-      <span class="nav-label">Gestão</span>
-      <a href="#dossies" class="nav-item" data-view="dossies"><i>📁</i>Dossiês</a>
+      <span class="nav-label">GESTÃO</span>
       <a href="#historico" class="nav-item" data-view="historico"><i>🕑</i>Histórico</a>
       <a href="#auditoria" class="nav-item" data-view="auditoria"><i>🧾</i>Auditoria LGPD</a>
-
-      <span class="nav-label">Administração</span>
-      <a href="#creditos" class="nav-item" data-view="creditos"><i>💳</i>Créditos & Planos</a>
-      <a href="#integracoes" class="nav-item" data-view="integracoes"><i>🔌</i>Integrações de API</a>
     </nav>
 
     <div class="side-foot">
-      <div class="side-user">
+      <div class="support-box" onclick="App.openSupportModal()">
+        <span style="font-size:11.5px;color:var(--txt-3);display:block;margin-bottom:2px">ℹ️ Precisa de suporte?</span>
+        <div style="display:flex;align-items:center;gap:6px;font-size:12.5px;font-weight:700;color:var(--accent)">
+          <span>📞 Suporte & WhatsApp</span>
+        </div>
+      </div>
+      <div class="side-user" style="margin-top:10px">
         <div class="avatar" id="side-avatar">A</div>
         <div class="side-user-info">
           <strong id="side-username">admin</strong>
-          <span id="side-role">Investigador Sênior</span>
+          <span id="side-role">Investigador PRO</span>
         </div>
       </div>
-      <button class="btn btn-ghost btn-sm btn-block" id="logout-btn">Sair ↩</button>
+      <button class="btn btn-ghost btn-sm btn-block" id="logout-btn" style="margin-top:8px">Sair ↩</button>
     </div>
   </aside>
 
@@ -174,12 +177,53 @@
       <button class="hamb" id="hamb">☰</button>
       <div class="top-search">
         <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
-        <input type="text" id="global-search" placeholder="Busca inteligente: CPF, CNPJ, placa, e-mail, IP, telefone…" />
+        <input type="text" id="global-search" placeholder="🔍 Buscar módulos ou consultar CPF, CNPJ, placa, telefone, e-mail…" />
         <kbd>Enter</kbd>
       </div>
       <div class="top-right">
-        <span class="status-pill"><span class="dot"></span> Sistemas operacionais</span>
-        <span class="badge-demo sm" id="mode-badge">DEMO</span>
+        <div class="top-credit-pill" onclick="App.go('creditos')" title="Recarregar créditos">
+          <span style="font-size:11px;font-weight:800;color:var(--ok)">$ CRÉDITOS</span>
+          <strong id="credits-val" style="font-family:var(--mono);color:#fff">100</strong>
+        </div>
+
+        <div class="notif-btn-wrap" style="position:relative">
+          <button class="icon-btn" id="notif-btn" onclick="App.toggleNotifs()" title="Notificações">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+            <span class="notif-count-badge">2</span>
+          </button>
+          <div id="notif-dropdown" class="notif-dropdown hidden">
+            <div class="notif-head">
+              <strong>🔔 Notificações do Sistema</strong>
+              <small style="color:var(--txt-3)">2 novas</small>
+            </div>
+            <div class="notif-list">
+              <div class="notif-item unread">
+                <div class="notif-ico">🚀</div>
+                <div>
+                  <strong>Versão 5.0 Oficial Ativa</strong>
+                  <p>Catálogo de 35 módulos com ferramentas periciais e OSINT liberadas.</p>
+                  <time>Agora mesmo</time>
+                </div>
+              </div>
+              <div class="notif-item unread">
+                <div class="notif-ico">⚖️</div>
+                <div>
+                  <strong>DataJud / CNJ Conectado</strong>
+                  <p>Metadados estatísticos Datamart e processos judiciais sincronizados.</p>
+                  <time>Hoje</time>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="user-pill-wrap" onclick="App.go('creditos')">
+          <div class="user-avatar-sm" id="top-avatar">A</div>
+          <div class="user-pill-meta">
+            <span id="top-user-name">admin</span>
+            <span class="badge-plan-tag">PRO</span>
+          </div>
+        </div>
       </div>
     </header>
 

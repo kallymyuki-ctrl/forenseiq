@@ -732,14 +732,451 @@ const Mock = (() => {
       desc: 'Para alvos do tipo domínio: descobre subdomínios expostos excluindo o www principal.',
       build: q => { const clean = q.replace(/^https?:\/\//, '').replace(/\/.*$/, '').replace(/^www\./, ''); return `site:*.${clean} -www.${clean} -site:${clean}`; }
     },
+  // ============================================================
+  // Catálogo Oficial de 35 Módulos (Detetive Forense)
+  // ============================================================
+  const MODULOS_CATALOG = [
+    // 1. Dados Completos
     {
-      id: 'login-portais',
-      cat: 'Acessos',
-      titulo: 'Páginas de Login & Painéis Internos',
-      desc: 'Para alvos do tipo domínio ou empresa: localiza painéis de autenticação, cpanel, phpMyAdmin ou VPNs.',
-      build: q => `site:${q.replace(/^https?:\/\//, '').replace(/\/.*$/, '')} (inurl:login OR inurl:admin OR inurl:painel OR inurl:auth OR inurl:dashboard OR intitle:"login")`
+      id: 'investigador-osint',
+      categoria: 'dados_completos',
+      catNome: 'Dados Completos',
+      bannerTitle: 'INVESTIGADOR OSINT',
+      nome: 'Investigador OSINT',
+      ico: '👣',
+      badges: ['Mais usado', 'OSINT'],
+      desc: 'Busca dados de pessoas e empresas em diversas bases públicas junto com dados OSINT.',
+      remaining: 100,
+      targetView: 'cpf'
+    },
+    {
+      id: 'investigador-pro',
+      categoria: 'dados_completos',
+      catNome: 'Dados Completos',
+      bannerTitle: 'INVESTIGADOR PRO',
+      nome: 'Investigador PRO',
+      ico: '🕵️',
+      badges: ['Mais usado', 'PRO'],
+      desc: 'Consulta pericial completa de 20 páginas, 15 seções periciais, antecedentes criminais e timeline.',
+      remaining: 47,
+      targetView: 'cpf'
+    },
+    {
+      id: 'qualificacao-cadastral',
+      categoria: 'dados_completos',
+      catNome: 'Dados Completos',
+      bannerTitle: 'QUALIFICAÇÃO CIVIL',
+      nome: 'Qualificação Cadastral & Docs',
+      ico: '🪪',
+      badges: ['Oficial', '100% Gratuito'],
+      desc: 'Validação de CPF, RG, CNS, Título de Eleitor, CNH, renda estimada e score cadastral.',
+      remaining: 100,
+      targetView: 'cpf'
+    },
+    {
+      id: 'parentesco-vinculos',
+      categoria: 'dados_completos',
+      catNome: 'Dados Completos',
+      bannerTitle: 'MATRIZ DE PARENTESCO',
+      nome: 'Árvore Genealógica (15 Graus)',
+      ico: '🌳',
+      badges: ['Pericial', 'Novo'],
+      desc: 'Mapeamento de pais, avós, filhos, irmãos, tios, primos, sogros, cunhados e pessoas no mesmo endereço.',
+      remaining: 50,
+      targetView: 'cpf'
+    },
+    {
+      id: 'timeline-vida',
+      categoria: 'dados_completos',
+      catNome: 'Dados Completos',
+      bannerTitle: 'LINHA DO TEMPO',
+      nome: 'Linha do Tempo (Life Timeline)',
+      ico: '⏳',
+      badges: ['Forense', 'Mais usado'],
+      desc: 'Reconstrução cronológica de 29 marcos civis, profissionais, criminais e societários de 1928 a 2026.',
+      remaining: 100,
+      targetView: 'cpf'
+    },
+
+    // 2. Veículos
+    {
+      id: 'placa-veicular',
+      categoria: 'veiculos',
+      catNome: 'Veículos',
+      bannerTitle: 'PLACA VEICULAR',
+      nome: 'Placa Mercosul & Antiga',
+      ico: '🚗',
+      badges: ['Mais usado', '100% Gratuito'],
+      desc: 'Decodificação pericial de placa, modelo, ano de fabricação, município e restrições.',
+      remaining: 100,
+      targetView: 'placa'
+    },
+    {
+      id: 'renavam-chassi',
+      categoria: 'veiculos',
+      catNome: 'Veículos',
+      bannerTitle: 'RENAVAM & CHASSI',
+      nome: 'Decodificador WMI / Chassi',
+      ico: '🔢',
+      badges: ['Forense', 'Oficial'],
+      desc: 'Validador algorítmico e decodificação do padrão internacional de fabricação automotiva.',
+      remaining: 100,
+      targetView: 'placa'
+    },
+    {
+      id: 'detran-multas',
+      categoria: 'veiculos',
+      catNome: 'Veículos',
+      bannerTitle: 'HISTÓRICO DETRAN',
+      nome: 'Histórico DETRAN & Multas',
+      ico: '🚦',
+      badges: ['Oficial', '27 Estados'],
+      desc: 'Portal agregador de consultas aos 27 DETRANs estaduais para débitos e licenciamento.',
+      remaining: 100,
+      targetView: 'placa'
+    },
+    {
+      id: 'tabela-fipe',
+      categoria: 'veiculos',
+      catNome: 'Veículos',
+      bannerTitle: 'TABELA FIPE',
+      nome: 'Tabela FIPE & Depreciação',
+      ico: '📊',
+      badges: ['100% Gratuito', 'Oficial'],
+      desc: 'Consulta de valor venal de mercado oficial FIPE e histórico de desvalorização.',
+      remaining: 100,
+      targetView: 'placa'
+    },
+    {
+      id: 'leilao-sinistro',
+      categoria: 'veiculos',
+      catNome: 'Veículos',
+      bannerTitle: 'LEILÃO & SINISTRO',
+      nome: 'Checklist Leilão & Sinistro',
+      ico: '🔨',
+      badges: ['Pericial', 'Novo'],
+      desc: 'Verificador de indicativos de perda total, remarcação de chassi e passagem por leilão.',
+      remaining: 50,
+      targetView: 'placa'
+    },
+
+    // 3. CNH
+    {
+      id: 'cnh-registro',
+      categoria: 'cnh',
+      catNome: 'CNH',
+      bannerTitle: 'REGISTRO CNH',
+      nome: 'Registro CNH & Categorias',
+      ico: '🪪',
+      badges: ['Oficial', 'Mais usado'],
+      desc: 'Validador do dígito verificador da CNH, checagem de categorias (A/B/C/D/E) e primeira habilitação.',
+      remaining: 100,
+      targetView: 'cpf'
+    },
+    {
+      id: 'cnh-bloqueios',
+      categoria: 'cnh',
+      catNome: 'CNH',
+      bannerTitle: 'BLOQUEIOS & EAR',
+      nome: 'Pontuação & Impedimentos CNH',
+      ico: '⛔',
+      badges: ['Oficial', 'Novo'],
+      desc: 'Consulta de suspensão do direito de dirigir, bloqueios judiciais e Exerce Atividade Remunerada (EAR).',
+      remaining: 50,
+      targetView: 'cpf'
+    },
+
+    // 4. Ferramentas Forenses
+    {
+      id: 'exif-metadata',
+      categoria: 'ferramentas',
+      catNome: 'Ferramentas',
+      bannerTitle: 'EXTRATOR EXIF',
+      nome: 'Extrator EXIF & Metadados',
+      ico: '📍',
+      badges: ['Forense', '100% Gratuito'],
+      desc: 'Extração instantânea no navegador de GPS, modelo da câmera, data/hora e software de edição.',
+      remaining: 100,
+      targetView: 'forense'
+    },
+    {
+      id: 'hash-analyzer',
+      categoria: 'ferramentas',
+      catNome: 'Ferramentas',
+      bannerTitle: 'CALCULADOR HASH',
+      nome: 'Calculador Hash (MD5/SHA256)',
+      ico: '🔐',
+      badges: ['Custódia', 'Forense'],
+      desc: 'Cálculo de hashes criptográficos (MD5, SHA-1, SHA-256) para garantia de cadeia de custódia.',
+      remaining: 100,
+      targetView: 'forense'
+    },
+    {
+      id: 'email-header',
+      categoria: 'ferramentas',
+      catNome: 'Ferramentas',
+      bannerTitle: 'HEADER E-MAIL',
+      nome: 'Analisador de Cabeçalho E-mail',
+      ico: '✉️',
+      badges: ['Segurança', 'OSINT'],
+      desc: 'Decodificação de SPF, DKIM, DMARC e IPs de roteamento de mensagens de e-mail.',
+      remaining: 100,
+      targetView: 'email'
+    },
+    {
+      id: 'url-sandbox',
+      categoria: 'ferramentas',
+      catNome: 'Ferramentas',
+      bannerTitle: 'URL & PHISHING',
+      nome: 'Verificador de URLs & Phishing',
+      ico: '🛡️',
+      badges: ['Segurança', '100% Gratuito'],
+      desc: 'Inspeção de reputação de links, domínios maliciosos e expansão de encurtadores.',
+      remaining: 100,
+      targetView: 'recon'
+    },
+    {
+      id: 'google-dorks',
+      categoria: 'ferramentas',
+      catNome: 'Ferramentas',
+      bannerTitle: 'GOOGLE DORKS',
+      nome: 'Construtor de Google Dorks',
+      ico: '⚡',
+      badges: ['Mais usado', 'OSINT'],
+      desc: 'Gerador de operadores avançados para encontrar PDFs, planilhas, cadastros e painéis expostos.',
+      remaining: 100,
+      targetView: 'dorks'
+    },
+
+    // 5. Fotos & Reconhecimento
+    {
+      id: 'reconhecimento-facial',
+      categoria: 'fotos',
+      catNome: 'Fotos',
+      bannerTitle: 'RECONHECIMENTO FACIAL',
+      nome: 'Reconhecimento Facial OSINT',
+      ico: '👤',
+      badges: ['Mais usado', 'Novo'],
+      desc: 'Busque pessoas apenas com uma foto em motores de busca reversa e biometria aberta.',
+      remaining: 15,
+      targetView: 'facial'
+    },
+    {
+      id: 'busca-social',
+      categoria: 'fotos',
+      catNome: 'Fotos',
+      bannerTitle: 'BUSCA SOCIAL',
+      nome: 'Busca Social Multiplataforma',
+      ico: '🌐',
+      badges: ['Mais usado', 'Novo'],
+      desc: 'Poderosa busca reversa na web: use FOTO, CPF ou NOME e encontre informações e atividades.',
+      remaining: 15,
+      targetView: 'username'
+    },
+    {
+      id: 'ela-forense',
+      categoria: 'fotos',
+      catNome: 'Fotos',
+      bannerTitle: 'ANÁLISE ELA FOTOS',
+      nome: 'Análise Forense ELA (Imagens)',
+      ico: '🔬',
+      badges: ['Pericial', 'Forense'],
+      desc: 'Detecção de manipulações, montagens e edições digitais em fotografias periciadas.',
+      remaining: 50,
+      targetView: 'facial'
+    },
+
+    // 6. Empresarial
+    {
+      id: 'cnpj-receita',
+      categoria: 'empresarial',
+      catNome: 'Empresarial',
+      bannerTitle: 'CNPJ RECEITA FEDERAL',
+      nome: 'Consulta CNPJ Completa',
+      ico: '🏢',
+      badges: ['Mais usado', 'Oficial'],
+      desc: 'Razão social, situação cadastral, CNAE, endereço, capital e quadro societário (QSA).',
+      remaining: 100,
+      targetView: 'cnpj'
+    },
+    {
+      id: 'qsa-socios',
+      categoria: 'empresarial',
+      catNome: 'Empresarial',
+      bannerTitle: 'QUADRO SOCIETÁRIO',
+      nome: 'Quadro de Sócios (QSA)',
+      ico: '👥',
+      badges: ['Oficial', '100% Gratuito'],
+      desc: 'Mapeamento de sócios administradores, participações, procuradores e coligadas.',
+      remaining: 100,
+      targetView: 'cnpj'
+    },
+    {
+      id: 'simples-mei',
+      categoria: 'empresarial',
+      catNome: 'Empresarial',
+      bannerTitle: 'SIMPLES & MEI',
+      nome: 'Simples Nacional & MEI',
+      ico: '🧾',
+      badges: ['Oficial', 'Receita Federal'],
+      desc: 'Consulta de opção pelo Simples Nacional, SIMEI e data de enquadramento.',
+      remaining: 100,
+      targetView: 'cnpj'
+    },
+    {
+      id: 'filiais-rede',
+      categoria: 'empresarial',
+      catNome: 'Empresarial',
+      bannerTitle: 'REDE & FILIAIS',
+      nome: 'Filiais & Grupo Econômico',
+      ico: '🏬',
+      badges: ['Corporativo', 'Novo'],
+      desc: 'Identificação de filiais ativas, matrizes e conexões empresariais no Brasil.',
+      remaining: 100,
+      targetView: 'cnpj'
+    },
+
+    // 7. Registros Nacionais
+    {
+      id: 'datajud-cnj',
+      categoria: 'registros',
+      catNome: 'Registros Nacionais',
+      bannerTitle: 'PROCESSOS DATAJUD',
+      nome: 'Processos Judiciais (DataJud)',
+      ico: '⚖️',
+      badges: ['Mais usado', 'Oficial CNJ'],
+      desc: 'Consulta direta no CNJ e tribunais (TRF, TJ, TRT, STJ) com metadados Datamart.',
+      remaining: 100,
+      targetView: 'processos'
+    },
+    {
+      id: 'bnmp-mandados',
+      categoria: 'registros',
+      catNome: 'Registros Nacionais',
+      bannerTitle: 'MANDADOS BNMP 3.0',
+      nome: 'Mandados de Prisão (BNMP)',
+      ico: '🚨',
+      badges: ['Oficial CNJ', '100% Gratuito'],
+      desc: 'Banco Nacional de Mandados de Prisão do CNJ — checagem de ordens de captura.',
+      remaining: 100,
+      targetView: 'mandados'
+    },
+    {
+      id: 'pgfn-divida',
+      categoria: 'registros',
+      catNome: 'Registros Nacionais',
+      bannerTitle: 'DÍVIDA ABERTA PGFN',
+      nome: 'Dívida Ativa da União (PGFN)',
+      ico: '📉',
+      badges: ['Oficial', '100% Gratuito'],
+      desc: 'Consulta a inscrições na Dívida Ativa da União, FGTS e execuções fiscais federais.',
+      remaining: 100,
+      targetView: 'mandados'
+    },
+    {
+      id: 'cndt-trabalhista',
+      categoria: 'registros',
+      catNome: 'Registros Nacionais',
+      bannerTitle: 'CERTIDÃO TRABALHISTA',
+      nome: 'Certidão Negativa (CNDT/TST)',
+      ico: '💼',
+      badges: ['Oficial TST', '100% Gratuito'],
+      desc: 'Banco Nacional de Devedores Trabalhistas (BNDT) da Justiça do Trabalho.',
+      remaining: 100,
+      targetView: 'mandados'
+    },
+    {
+      id: 'cenprot-protestos',
+      categoria: 'registros',
+      catNome: 'Registros Nacionais',
+      bannerTitle: 'CENTRAL PROTESTOS',
+      nome: 'Protestos Cartorários (Cenprot)',
+      ico: '🏛️',
+      badges: ['Cartórios', 'Oficial'],
+      desc: 'Consulta nacional em cartórios de protesto de títulos e documentos.',
+      remaining: 100,
+      targetView: 'mandados'
+    },
+
+    // 8. Financeiro
+    {
+      id: 'patrimonio-bens',
+      categoria: 'financeiro',
+      catNome: 'Financeiro',
+      bannerTitle: 'PATRIMÔNIO & BENS',
+      nome: 'Patrimônio & Participações',
+      ico: '💰',
+      badges: ['Mais usado', 'OSINT'],
+      desc: 'Levantamento patrimonial em bases públicas de empresas, capitais e declarações.',
+      remaining: 100,
+      targetView: 'bens'
+    },
+    {
+      id: 'pix-validador',
+      categoria: 'financeiro',
+      catNome: 'Financeiro',
+      bannerTitle: 'CHAVES PIX & ISPB',
+      nome: 'Validador de Chaves PIX',
+      ico: '📱',
+      badges: ['Bancário', '100% Gratuito'],
+      desc: 'Identificador do formato da chave PIX, tipo de chave e roteamento do banco ISPB.',
+      remaining: 100,
+      targetView: 'bens'
+    },
+    {
+      id: 'aeronaves-embarcacoes',
+      categoria: 'financeiro',
+      catNome: 'Financeiro',
+      bannerTitle: 'AERONAVES & EMBARCAÇÕES',
+      nome: 'Aeronaves RAB & Embarcações',
+      ico: '✈️',
+      badges: ['Oficial ANAC', '100% Gratuito'],
+      desc: 'Registro Aeronáutico Brasileiro da ANAC e rastreamento de navios/embarcações.',
+      remaining: 100,
+      targetView: 'aeronaves'
+    },
+    {
+      id: 'cripto-blockchain',
+      categoria: 'financeiro',
+      catNome: 'Financeiro',
+      bannerTitle: 'RASTREAMENTO CRIPTO',
+      nome: 'Rastreamento Cripto / Wallet',
+      ico: '🪙',
+      badges: ['Blockchain', 'OSINT'],
+      desc: 'Rastreamento de carteiras Bitcoin, Ethereum, Tron e Solana com saldo e transações.',
+      remaining: 100,
+      targetView: 'cripto'
+    },
+
+    // 9. Geradores
+    {
+      id: 'gerador-documentos',
+      categoria: 'geradores',
+      catNome: 'Geradores',
+      bannerTitle: 'GERADOR DE TESTES',
+      nome: 'Gerador & Validador de Docs',
+      ico: '🎲',
+      badges: ['Dev / Perícia', '100% Gratuito'],
+      desc: 'Geração e validação de CPF, CNPJ, CNH, RG, PIS e dados sintéticos para testes e perícias.',
+      remaining: 100,
+      targetView: 'forense'
+    },
+
+    // 10. Especiais
+    {
+      id: 'vazamentos-senhas',
+      categoria: 'especiais',
+      catNome: 'Especiais',
+      bannerTitle: 'VAZAMENTOS & BREACHES',
+      nome: 'Vazamentos & Credenciais',
+      ico: '🔒',
+      badges: ['Segurança', 'Mais usado'],
+      desc: 'Verificação de e-mails comprometidos em vazamentos públicos de bancos de dados.',
+      remaining: 100,
+      targetView: 'vazamentos'
     }
   ];
 
-  return { rng, hash, pick, int, validaCPF, validaCNPJ, fmtCPF, fmtCNPJ, pessoa, empresa, veiculo, vazamentos, telefone, email, SOCIAL, BREACHES, tribunalFromCNJ, OSINT_BRASIL_DIRECTORY, DORKS_TEMPLATES };
+  return { rng, hash, pick, int, validaCPF, validaCNPJ, fmtCPF, fmtCNPJ, pessoa, empresa, veiculo, vazamentos, telefone, email, SOCIAL, BREACHES, tribunalFromCNJ, OSINT_BRASIL_DIRECTORY, DORKS_TEMPLATES, MODULOS_CATALOG };
 })();
+

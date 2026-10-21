@@ -1,5 +1,166 @@
 [
   {
+    "ts": "2026-10-21T19:35:33.816Z",
+    "user": "semgrana_1792611333768",
+    "delta": -3,
+    "saldo": 1,
+    "desc": "Consulta — VAZAMENTOS"
+  },
+  {
+    "ts": "2026-10-21T19:35:33.814Z",
+    "user": "semgrana_1792611333768",
+    "delta": -3,
+    "saldo": 4,
+    "desc": "Consulta — VAZAMENTOS"
+  },
+  {
+    "ts": "2026-10-21T19:35:33.811Z",
+    "user": "semgrana_1792611333768",
+    "delta": -3,
+    "saldo": 7,
+    "desc": "Consulta — VAZAMENTOS"
+  },
+  {
+    "ts": "2026-10-21T19:35:33.809Z",
+    "user": "semgrana_1792611333768",
+    "delta": -3,
+    "saldo": 10,
+    "desc": "Consulta — VAZAMENTOS"
+  },
+  {
+    "ts": "2026-10-21T19:35:33.807Z",
+    "user": "semgrana_1792611333768",
+    "delta": -3,
+    "saldo": 13,
+    "desc": "Consulta — VAZAMENTOS"
+  },
+  {
+    "ts": "2026-10-21T19:35:33.805Z",
+    "user": "semgrana_1792611333768",
+    "delta": -3,
+    "saldo": 16,
+    "desc": "Consulta — VAZAMENTOS"
+  },
+  {
+    "ts": "2026-10-21T19:35:33.803Z",
+    "user": "semgrana_1792611333768",
+    "delta": -3,
+    "saldo": 19,
+    "desc": "Consulta — VAZAMENTOS"
+  },
+  {
+    "ts": "2026-10-21T19:35:33.801Z",
+    "user": "semgrana_1792611333768",
+    "delta": -3,
+    "saldo": 22,
+    "desc": "Consulta — VAZAMENTOS"
+  },
+  {
+    "ts": "2026-10-21T19:35:33.799Z",
+    "user": "semgrana_1792611333768",
+    "delta": 25,
+    "saldo": 25,
+    "desc": "Créditos de boas-vindas"
+  },
+  {
+    "ts": "2026-10-21T19:35:33.761Z",
+    "user": "detetive_1792611312491",
+    "delta": 10,
+    "saldo": 68,
+    "desc": "Lançamento administrativo — admin"
+  },
+  {
+    "ts": "2026-10-21T19:35:32.918Z",
+    "user": "detetive_1792611312491",
+    "delta": -1,
+    "saldo": 58,
+    "desc": "Consulta — USERNAME"
+  },
+  {
+    "ts": "2026-10-21T19:35:32.916Z",
+    "user": "detetive_1792611312491",
+    "delta": -1,
+    "saldo": 59,
+    "desc": "Consulta — BENS"
+  },
+  {
+    "ts": "2026-10-21T19:35:32.914Z",
+    "user": "detetive_1792611312491",
+    "delta": -1,
+    "saldo": 60,
+    "desc": "Consulta — MANDADOS"
+  },
+  {
+    "ts": "2026-10-21T19:35:12.906Z",
+    "user": "detetive_1792611312491",
+    "delta": -2,
+    "saldo": 61,
+    "desc": "Consulta — PROCESSOS"
+  },
+  {
+    "ts": "2026-10-21T19:35:12.905Z",
+    "user": "detetive_1792611312491",
+    "delta": 50,
+    "saldo": 63,
+    "desc": "Compra (simulada) — pacote Starter (R$ 49,00)"
+  },
+  {
+    "ts": "2026-10-21T19:35:12.900Z",
+    "user": "detetive_1792611312491",
+    "delta": -3,
+    "saldo": 13,
+    "desc": "Consulta — VAZAMENTOS"
+  },
+  {
+    "ts": "2026-10-21T19:35:12.897Z",
+    "user": "detetive_1792611312491",
+    "delta": -2,
+    "saldo": 16,
+    "desc": "Consulta — EMAIL"
+  },
+  {
+    "ts": "2026-10-21T19:35:12.895Z",
+    "user": "detetive_1792611312491",
+    "delta": -2,
+    "saldo": 18,
+    "desc": "Consulta — TELEFONE"
+  },
+  {
+    "ts": "2026-10-21T19:35:12.830Z",
+    "user": "detetive_1792611312491",
+    "delta": -1,
+    "saldo": 20,
+    "desc": "Consulta — IP"
+  },
+  {
+    "ts": "2026-10-21T19:35:12.792Z",
+    "user": "detetive_1792611312491",
+    "delta": -1,
+    "saldo": 21,
+    "desc": "Consulta — CEP"
+  },
+  {
+    "ts": "2026-10-21T19:35:12.581Z",
+    "user": "detetive_1792611312491",
+    "delta": -1,
+    "saldo": 22,
+    "desc": "Consulta — CNPJ"
+  },
+  {
+    "ts": "2026-10-21T19:35:12.579Z",
+    "user": "detetive_1792611312491",
+    "delta": -2,
+    "saldo": 23,
+    "desc": "Consulta — CPF"
+  },
+  {
+    "ts": "2026-10-21T19:35:12.539Z",
+    "user": "detetive_1792611312491",
+    "delta": 25,
+    "saldo": 25,
+    "desc": "Créditos de boas-vindas"
+  },
+  {
     "ts": "2026-10-20T22:51:22.072Z",
     "user": "semgrana_1792536681993",
     "delta": -3,
