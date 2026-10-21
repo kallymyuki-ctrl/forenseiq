@@ -1,0 +1,23 @@
+{
+  "name": "forenseiq",
+  "version": "5.0.0",
+  "description": "ForenseIQ — Plataforma de Inteligência Forense, OSINT e Perícia Digital",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node tests/audit.js && node tests/api-test.mjs"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "keywords": [
+    "forense",
+    "osint",
+    "investigacao",
+    "pericia",
+    "datajud",
+    "brasilapi"
+  ],
+  "author": "ForenseIQ",
+  "license": "Proprietary"
+}

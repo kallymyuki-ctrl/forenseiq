@@ -1,0 +1,13 @@
+node_modules/
+.DS_Store
+*.log
+data/keys.json
+data/users.json
+data/history.json
+data/audit.json
+data/transactions.json
+data/dossiers.json
+data/pending.json
+data/costs.json
+.env
+.env.local

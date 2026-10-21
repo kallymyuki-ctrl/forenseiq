@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ForenseIQ — Plataforma de Inteligência Investigativa</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css" />
+<link rel="icon" type="image/svg+xml" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><circle cx="28" cy="28" r="18" fill="none" stroke="%2322d3ee" stroke-width="6"/><line x1="41" y1="41" x2="56" y2="56" stroke="%2322d3ee" stroke-width="8" stroke-linecap="round"/></svg>' />
+</head>
+<body>
+
+<!-- ============ TELA DE LOGIN ============ -->
+<div id="login-screen" class="login-screen">
+  <div class="login-bg">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="grid-overlay"></div>
+  </div>
+
+  <div class="login-wrap">
+    <!-- Painel institucional -->
+    <aside class="login-hero">
+      <div class="brand">
+        <div class="brand-mark">
+          <svg viewBox="0 0 64 64" width="34" height="34"><circle cx="28" cy="28" r="18" fill="none" stroke="currentColor" stroke-width="6"/><line x1="41" y1="41" x2="56" y2="56" stroke="currentColor" stroke-width="8" stroke-linecap="round"/><circle cx="28" cy="28" r="7" fill="currentColor" opacity=".35"/></svg>
+        </div>
+        <div>
+          <span class="brand-name">Forense<b>IQ</b></span>
+          <span class="brand-tag">Inteligência Investigativa</span>
+        </div>
+      </div>
+
+      <h1>A plataforma exclusiva para <span class="grad-text">investigadores profissionais</span>.</h1>
+      <p class="hero-sub">Ferramentas OSINT desenvolvidas para profissionais certificados da investigação forense, advocacia, segurança privada e jornalismo investigativo.</p>
+
+      <ul class="hero-feats">
+        <li>
+          <div class="feat-ico">🛡️</div>
+          <div><strong>Credenciamento profissional</strong><span>Acesso mediante análise e aprovação do perfil do usuário.</span></div>
+        </li>
+        <li>
+          <div class="feat-ico">⚖️</div>
+          <div><strong>Conformidade com a LGPD</strong><span>Tratamento de dados alinhado à legislação brasileira vigente.</span></div>
+        </li>
+        <li>
+          <div class="feat-ico">🔒</div>
+          <div><strong>Comprometimento com os dados</strong><span>Criptografia, trilha de auditoria e tratamento adequado em todas as consultas.</span></div>
+        </li>
+      </ul>
+
+      <div class="hero-warning">⚠️ O uso indevido desta plataforma caracteriza crime.</div>
+    </aside>
+
+    <!-- Cartão de login -->
+    <main class="login-card">
+      <div class="login-card-head">
+        <h2 id="login-title">Entrar</h2>
+        <p id="login-sub">Acesse sua conta para continuar</p>
+      </div>
+
+      <form id="login-form" autocomplete="off">
+        <label class="field">
+          <span>Usuário</span>
+          <div class="input-ico">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6.5 8-6.5s8 2.5 8 6.5"/></svg>
+            <input type="text" id="login-user" placeholder="seu.usuario" required />
+          </div>
+        </label>
+
+        <label class="field">
+          <span>Senha</span>
+          <div class="input-ico">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+            <input type="password" id="login-pass" placeholder="••••••••" required />
+            <button type="button" class="eye-btn" id="toggle-pass" title="Mostrar senha">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z"/><circle cx="12" cy="12" r="3"/></svg>
+            </button>
+          </div>
+        </label>
+
+        <div class="login-row">
+          <label class="check"><input type="checkbox" id="remember" checked /><span></span>Manter conectado</label>
+          <a href="#" class="link-muted" id="forgot-link" onclick="App.toast('Fale com seu gestor ou com o suporte.','info');return false;">Esqueci a senha</a>
+          <a href="#" class="link-muted" id="reg-toggle" style="display:none" onclick="App.toggleRegister();return false;">Criar nova conta</a>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block" id="login-btn">
+          <span>Entrar</span>
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </button>
+
+        <div class="login-demo">
+          <span class="badge-demo" id="login-mode-badge">AMBIENTE DE DEMONSTRAÇÃO</span>
+          <p id="login-hint">Use <code>admin</code> / <code>admin</code> ou qualquer usuário e senha.</p>
+        </div>
+      </form>
+
+      <footer class="login-foot">
+        <p>Problemas para acessar? Fale com seu gestor ou com o suporte.</p>
+        <p class="crime-note">O uso indevido desta plataforma caracteriza crime.</p>
+      </footer>
+    </main>
+  </div>
+</div>
+
+<!-- ============ APLICAÇÃO ============ -->
+<div id="app" class="app hidden">
+
+  <!-- Sidebar -->
+  <aside class="sidebar" id="sidebar">
+    <div class="side-brand">
+      <div class="brand-mark sm">
+        <svg viewBox="0 0 64 64" width="24" height="24"><circle cx="28" cy="28" r="18" fill="none" stroke="currentColor" stroke-width="6"/><line x1="41" y1="41" x2="56" y2="56" stroke="currentColor" stroke-width="8" stroke-linecap="round"/><circle cx="28" cy="28" r="7" fill="currentColor" opacity=".35"/></svg>
+      </div>
+      <span class="brand-name">Forense<b>IQ</b></span>
+    </div>
+
+    <nav class="side-nav">
+      <span class="nav-label">Geral</span>
+      <a href="#dashboard" class="nav-item active" data-view="dashboard"><i>▦</i>Dashboard</a>
+
+      <span class="nav-label">Consultas</span>
+      <a href="#cpf" class="nav-item" data-view="cpf"><i>🪪</i>Consulta CPF</a>
+      <a href="#cnpj" class="nav-item" data-view="cnpj"><i>🏢</i>Consulta CNPJ</a>
+      <a href="#telefone" class="nav-item" data-view="telefone"><i>📞</i>Telefone</a>
+      <a href="#email" class="nav-item" data-view="email"><i>✉️</i>E-mail</a>
+      <a href="#placa" class="nav-item" data-view="placa"><i>🚗</i>Placa Veicular</a>
+      <a href="#cep" class="nav-item" data-view="cep"><i>📍</i>CEP / Endereço</a>
+
+      <span class="nav-label">OSINT & Inteligência</span>
+      <a href="#ip" class="nav-item" data-view="ip"><i>🌐</i>IP / Geolocalização</a>
+      <a href="#username" class="nav-item" data-view="username"><i>👤</i>Busca de Usuário</a>
+      <a href="#vazamentos" class="nav-item" data-view="vazamentos"><i>🚨</i>Vazamentos</a>
+      <a href="#osintbrasil" class="nav-item" data-view="osintbrasil"><i>🇧🇷</i>Hub OSINT Brasil (150+ Fontes)</a>
+      <a href="#dorks" class="nav-item" data-view="dorks"><i>⚡</i>Gerador Google Dorks</a>
+      <a href="#recon" class="nav-item" data-view="recon"><i>📡</i>Recon Infra & Domínios</a>
+      <a href="#cripto" class="nav-item" data-view="cripto"><i>🪙</i>Rastreamento Cripto & Blockchain</a>
+      <a href="#aeronaves" class="nav-item" data-view="aeronaves"><i>✈️</i>Aeronaves & Embarcações</a>
+      <a href="#forense" class="nav-item" data-view="forense"><i>🔬</i>Analisador Forense & Hashes</a>
+      <a href="#framework" class="nav-item" data-view="framework"><i>🧭</i>Metodologia & Framework</a>
+
+      <span class="nav-label">Fontes Oficiais</span>
+      <a href="#processos" class="nav-item" data-view="processos"><i>⚖️</i>Processos Jurídicos</a>
+      <a href="#mandados" class="nav-item" data-view="mandados"><i>🧾</i>Mandados & Certidões</a>
+      <a href="#bens" class="nav-item" data-view="bens"><i>💼</i>Patrimônio & Participações</a>
+
+      <span class="nav-label">Gestão</span>
+      <a href="#dossies" class="nav-item" data-view="dossies"><i>📁</i>Dossiês</a>
+      <a href="#historico" class="nav-item" data-view="historico"><i>🕑</i>Histórico</a>
+      <a href="#auditoria" class="nav-item" data-view="auditoria"><i>🧾</i>Auditoria LGPD</a>
+
+      <span class="nav-label">Administração</span>
+      <a href="#creditos" class="nav-item" data-view="creditos"><i>💳</i>Créditos & Planos</a>
+      <a href="#integracoes" class="nav-item" data-view="integracoes"><i>🔌</i>Integrações de API</a>
+    </nav>
+
+    <div class="side-foot">
+      <div class="side-user">
+        <div class="avatar" id="side-avatar">A</div>
+        <div class="side-user-info">
+          <strong id="side-username">admin</strong>
+          <span id="side-role">Investigador Sênior</span>
+        </div>
+      </div>
+      <button class="btn btn-ghost btn-sm btn-block" id="logout-btn">Sair ↩</button>
+    </div>
+  </aside>
+
+  <!-- Conteúdo -->
+  <div class="main">
+    <header class="topbar">
+      <button class="hamb" id="hamb">☰</button>
+      <div class="top-search">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+        <input type="text" id="global-search" placeholder="Busca inteligente: CPF, CNPJ, placa, e-mail, IP, telefone…" />
+        <kbd>Enter</kbd>
+      </div>
+      <div class="top-right">
+        <span class="status-pill"><span class="dot"></span> Sistemas operacionais</span>
+        <span class="badge-demo sm" id="mode-badge">DEMO</span>
+      </div>
+    </header>
+
+    <main class="content" id="content"><!-- views renderizadas via JS --></main>
+
+    <footer class="app-foot">
+      ForenseIQ © 2026 · Ambiente de demonstração — dados pessoais exibidos são fictícios · Conformidade LGPD (Lei nº 13.709/2018) · O uso indevido caracteriza crime.
+    </footer>
+  </div>
+</div>
+
+<div id="toast-wrap" class="toast-wrap"></div>
+<div id="modal-root"></div>
+
+<script src="js/data.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

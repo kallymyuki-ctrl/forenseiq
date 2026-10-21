@@ -1,0 +1,422 @@
+[
+  {
+    "ts": "2026-10-20T22:51:22.072Z",
+    "user": "semgrana_1792536681993",
+    "delta": -3,
+    "saldo": 1,
+    "desc": "Consulta — VAZAMENTOS"
+  },
+  {
+    "ts": "2026-10-20T22:51:22.070Z",
+    "user": "semgrana_1792536681993",
+    "delta": -3,
+    "saldo": 4,
+    "desc": "Consulta — VAZAMENTOS"
+  },
+  {
+    "ts": "2026-10-20T22:51:22.066Z",
+    "user": "semgrana_1792536681993",
+    "delta": -3,
+    "saldo": 7,
+    "desc": "Consulta — VAZAMENTOS"
+  },
+  {
+    "ts": "2026-10-20T22:51:22.064Z",
+    "user": "semgrana_1792536681993",
+    "delta": -3,
+    "saldo": 10,
+    "desc": "Consulta — VAZAMENTOS"
+  },
+  {
+    "ts": "2026-10-20T22:51:22.062Z",
+    "user": "semgrana_1792536681993",
+    "delta": -3,
+    "saldo": 13,
+    "desc": "Consulta — VAZAMENTOS"
+  },
+  {
+    "ts": "2026-10-20T22:51:22.061Z",
+    "user": "semgrana_1792536681993",
+    "delta": -3,
+    "saldo": 16,
+    "desc": "Consulta — VAZAMENTOS"
+  },
+  {
+    "ts": "2026-10-20T22:51:22.058Z",
+    "user": "semgrana_1792536681993",
+    "delta": -3,
+    "saldo": 19,
+    "desc": "Consulta — VAZAMENTOS"
+  },
+  {
+    "ts": "2026-10-20T22:51:22.055Z",
+    "user": "semgrana_1792536681993",
+    "delta": -3,
+    "saldo": 22,
+    "desc": "Consulta — VAZAMENTOS"
+  },
+  {
+    "ts": "2026-10-20T22:51:22.052Z",
+    "user": "semgrana_1792536681993",
+    "delta": 25,
+    "saldo": 25,
+    "desc": "Créditos de boas-vindas"
+  },
+  {
+    "ts": "2026-10-20T22:51:21.984Z",
+    "user": "detetive_1792536660876",
+    "delta": 10,
+    "saldo": 68,
+    "desc": "Lançamento administrativo — admin"
+  },
+  {
+    "ts": "2026-10-20T22:51:21.301Z",
+    "user": "detetive_1792536660876",
+    "delta": -1,
+    "saldo": 58,
+    "desc": "Consulta — USERNAME"
+  },
+  {
+    "ts": "2026-10-20T22:51:21.299Z",
+    "user": "detetive_1792536660876",
+    "delta": -1,
+    "saldo": 59,
+    "desc": "Consulta — BENS"
+  },
+  {
+    "ts": "2026-10-20T22:51:21.296Z",
+    "user": "detetive_1792536660876",
+    "delta": -1,
+    "saldo": 60,
+    "desc": "Consulta — MANDADOS"
+  },
+  {
+    "ts": "2026-10-20T22:51:01.288Z",
+    "user": "detetive_1792536660876",
+    "delta": -2,
+    "saldo": 61,
+    "desc": "Consulta — PROCESSOS"
+  },
+  {
+    "ts": "2026-10-20T22:51:01.286Z",
+    "user": "detetive_1792536660876",
+    "delta": 50,
+    "saldo": 63,
+    "desc": "Compra (simulada) — pacote Starter (R$ 49,00)"
+  },
+  {
+    "ts": "2026-10-20T22:51:01.281Z",
+    "user": "detetive_1792536660876",
+    "delta": -3,
+    "saldo": 13,
+    "desc": "Consulta — VAZAMENTOS"
+  },
+  {
+    "ts": "2026-10-20T22:51:01.278Z",
+    "user": "detetive_1792536660876",
+    "delta": -2,
+    "saldo": 16,
+    "desc": "Consulta — EMAIL"
+  },
+  {
+    "ts": "2026-10-20T22:51:01.275Z",
+    "user": "detetive_1792536660876",
+    "delta": -2,
+    "saldo": 18,
+    "desc": "Consulta — TELEFONE"
+  },
+  {
+    "ts": "2026-10-20T22:51:01.207Z",
+    "user": "detetive_1792536660876",
+    "delta": -1,
+    "saldo": 20,
+    "desc": "Consulta — IP"
+  },
+  {
+    "ts": "2026-10-20T22:51:01.140Z",
+    "user": "detetive_1792536660876",
+    "delta": -1,
+    "saldo": 21,
+    "desc": "Consulta — CEP"
+  },
+  {
+    "ts": "2026-10-20T22:51:00.987Z",
+    "user": "detetive_1792536660876",
+    "delta": -1,
+    "saldo": 22,
+    "desc": "Consulta — CNPJ"
+  },
+  {
+    "ts": "2026-10-20T22:51:00.985Z",
+    "user": "detetive_1792536660876",
+    "delta": -2,
+    "saldo": 23,
+    "desc": "Consulta — CPF"
+  },
+  {
+    "ts": "2026-10-20T22:51:00.934Z",
+    "user": "detetive_1792536660876",
+    "delta": 25,
+    "saldo": 25,
+    "desc": "Créditos de boas-vindas"
+  },
+  {
+    "ts": "2026-10-20T22:50:26.574Z",
+    "user": "detetive1",
+    "delta": 10,
+    "saldo": 78,
+    "desc": "Lançamento administrativo — admin"
+  },
+  {
+    "ts": "2026-10-20T22:50:25.575Z",
+    "user": "detetive_1792536605006",
+    "delta": -1,
+    "saldo": 58,
+    "desc": "Consulta — USERNAME"
+  },
+  {
+    "ts": "2026-10-20T22:50:25.573Z",
+    "user": "detetive_1792536605006",
+    "delta": -1,
+    "saldo": 59,
+    "desc": "Consulta — BENS"
+  },
+  {
+    "ts": "2026-10-20T22:50:25.569Z",
+    "user": "detetive_1792536605006",
+    "delta": -1,
+    "saldo": 60,
+    "desc": "Consulta — MANDADOS"
+  },
+  {
+    "ts": "2026-10-20T22:50:05.558Z",
+    "user": "detetive_1792536605006",
+    "delta": -2,
+    "saldo": 61,
+    "desc": "Consulta — PROCESSOS"
+  },
+  {
+    "ts": "2026-10-20T22:50:05.556Z",
+    "user": "detetive_1792536605006",
+    "delta": 50,
+    "saldo": 63,
+    "desc": "Compra (simulada) — pacote Starter (R$ 49,00)"
+  },
+  {
+    "ts": "2026-10-20T22:50:05.549Z",
+    "user": "detetive_1792536605006",
+    "delta": -3,
+    "saldo": 13,
+    "desc": "Consulta — VAZAMENTOS"
+  },
+  {
+    "ts": "2026-10-20T22:50:05.547Z",
+    "user": "detetive_1792536605006",
+    "delta": -2,
+    "saldo": 16,
+    "desc": "Consulta — EMAIL"
+  },
+  {
+    "ts": "2026-10-20T22:50:05.543Z",
+    "user": "detetive_1792536605006",
+    "delta": -2,
+    "saldo": 18,
+    "desc": "Consulta — TELEFONE"
+  },
+  {
+    "ts": "2026-10-20T22:50:05.477Z",
+    "user": "detetive_1792536605006",
+    "delta": -1,
+    "saldo": 20,
+    "desc": "Consulta — IP"
+  },
+  {
+    "ts": "2026-10-20T22:50:05.382Z",
+    "user": "detetive_1792536605006",
+    "delta": -1,
+    "saldo": 21,
+    "desc": "Consulta — CEP"
+  },
+  {
+    "ts": "2026-10-20T22:50:05.113Z",
+    "user": "detetive_1792536605006",
+    "delta": -1,
+    "saldo": 22,
+    "desc": "Consulta — CNPJ"
+  },
+  {
+    "ts": "2026-10-20T22:50:05.110Z",
+    "user": "detetive_1792536605006",
+    "delta": -2,
+    "saldo": 23,
+    "desc": "Consulta — CPF"
+  },
+  {
+    "ts": "2026-10-20T22:50:05.059Z",
+    "user": "detetive_1792536605006",
+    "delta": 25,
+    "saldo": 25,
+    "desc": "Créditos de boas-vindas"
+  },
+  {
+    "ts": "2026-10-20T17:23:31.611Z",
+    "user": "semgrana",
+    "delta": -3,
+    "saldo": 1,
+    "desc": "Consulta — VAZAMENTOS"
+  },
+  {
+    "ts": "2026-10-20T17:23:31.609Z",
+    "user": "semgrana",
+    "delta": -3,
+    "saldo": 4,
+    "desc": "Consulta — VAZAMENTOS"
+  },
+  {
+    "ts": "2026-10-20T17:23:31.606Z",
+    "user": "semgrana",
+    "delta": -3,
+    "saldo": 7,
+    "desc": "Consulta — VAZAMENTOS"
+  },
+  {
+    "ts": "2026-10-20T17:23:31.604Z",
+    "user": "semgrana",
+    "delta": -3,
+    "saldo": 10,
+    "desc": "Consulta — VAZAMENTOS"
+  },
+  {
+    "ts": "2026-10-20T17:23:31.602Z",
+    "user": "semgrana",
+    "delta": -3,
+    "saldo": 13,
+    "desc": "Consulta — VAZAMENTOS"
+  },
+  {
+    "ts": "2026-10-20T17:23:31.600Z",
+    "user": "semgrana",
+    "delta": -3,
+    "saldo": 16,
+    "desc": "Consulta — VAZAMENTOS"
+  },
+  {
+    "ts": "2026-10-20T17:23:31.598Z",
+    "user": "semgrana",
+    "delta": -3,
+    "saldo": 19,
+    "desc": "Consulta — VAZAMENTOS"
+  },
+  {
+    "ts": "2026-10-20T17:23:31.596Z",
+    "user": "semgrana",
+    "delta": -3,
+    "saldo": 22,
+    "desc": "Consulta — VAZAMENTOS"
+  },
+  {
+    "ts": "2026-10-20T17:23:31.594Z",
+    "user": "semgrana",
+    "delta": 25,
+    "saldo": 25,
+    "desc": "Créditos de boas-vindas"
+  },
+  {
+    "ts": "2026-10-20T17:23:31.551Z",
+    "user": "detetive1",
+    "delta": 10,
+    "saldo": 68,
+    "desc": "Lançamento administrativo — admin"
+  },
+  {
+    "ts": "2026-10-20T17:23:30.472Z",
+    "user": "detetive1",
+    "delta": -1,
+    "saldo": 58,
+    "desc": "Consulta — USERNAME"
+  },
+  {
+    "ts": "2026-10-20T17:23:30.469Z",
+    "user": "detetive1",
+    "delta": -1,
+    "saldo": 59,
+    "desc": "Consulta — BENS"
+  },
+  {
+    "ts": "2026-10-20T17:23:30.467Z",
+    "user": "detetive1",
+    "delta": -1,
+    "saldo": 60,
+    "desc": "Consulta — MANDADOS"
+  },
+  {
+    "ts": "2026-10-20T17:23:10.445Z",
+    "user": "detetive1",
+    "delta": -2,
+    "saldo": 61,
+    "desc": "Consulta — PROCESSOS"
+  },
+  {
+    "ts": "2026-10-20T17:23:10.442Z",
+    "user": "detetive1",
+    "delta": 50,
+    "saldo": 63,
+    "desc": "Compra (simulada) — pacote Starter (R$ 49,00)"
+  },
+  {
+    "ts": "2026-10-20T17:23:10.436Z",
+    "user": "detetive1",
+    "delta": -3,
+    "saldo": 13,
+    "desc": "Consulta — VAZAMENTOS"
+  },
+  {
+    "ts": "2026-10-20T17:23:10.434Z",
+    "user": "detetive1",
+    "delta": -2,
+    "saldo": 16,
+    "desc": "Consulta — EMAIL"
+  },
+  {
+    "ts": "2026-10-20T17:23:10.432Z",
+    "user": "detetive1",
+    "delta": -2,
+    "saldo": 18,
+    "desc": "Consulta — TELEFONE"
+  },
+  {
+    "ts": "2026-10-20T17:23:10.375Z",
+    "user": "detetive1",
+    "delta": -1,
+    "saldo": 20,
+    "desc": "Consulta — IP"
+  },
+  {
+    "ts": "2026-10-20T17:23:10.333Z",
+    "user": "detetive1",
+    "delta": -1,
+    "saldo": 21,
+    "desc": "Consulta — CEP"
+  },
+  {
+    "ts": "2026-10-20T17:23:10.062Z",
+    "user": "detetive1",
+    "delta": -1,
+    "saldo": 22,
+    "desc": "Consulta — CNPJ"
+  },
+  {
+    "ts": "2026-10-20T17:23:10.060Z",
+    "user": "detetive1",
+    "delta": -2,
+    "saldo": 23,
+    "desc": "Consulta — CPF"
+  },
+  {
+    "ts": "2026-10-20T17:23:10.026Z",
+    "user": "detetive1",
+    "delta": 25,
+    "saldo": 25,
+    "desc": "Créditos de boas-vindas"
+  }
+]
